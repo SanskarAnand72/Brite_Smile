@@ -140,7 +140,7 @@ export function HeroSection({
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="absolute top-6 lg:top-10 left-0 lg:-left-6 glass-panel px-4 py-3.5 rounded-2xl shadow-xl flex items-center gap-3.5 z-30 animate-float-slow hover:scale-105 transition-transform cursor-default"
+            className="absolute top-6 lg:top-10 left-2 lg:left-0 glass-panel px-4 py-3.5 rounded-2xl shadow-xl flex items-center gap-3.5 z-30 animate-float-slow hover:scale-105 transition-transform cursor-default"
           >
             <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 shrink-0">
               <Star className="w-5 h-5 fill-amber-400 text-amber-400" />
@@ -165,7 +165,7 @@ export function HeroSection({
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="absolute bottom-8 lg:bottom-12 right-0 lg:-right-4 glass-panel px-4 py-3.5 rounded-2xl shadow-xl flex items-center gap-3.5 z-30 animate-float-medium hover:scale-105 transition-transform cursor-default"
+            className="absolute bottom-8 lg:bottom-12 right-2 lg:right-0 glass-panel px-4 py-3.5 rounded-2xl shadow-xl flex items-center gap-3.5 z-30 animate-float-medium hover:scale-105 transition-transform cursor-default"
           >
             <div className="w-11 h-11 rounded-xl bg-blue-600/10 border border-blue-600/20 flex items-center justify-center text-blue-600 text-xl font-bold shrink-0">
               🦷
