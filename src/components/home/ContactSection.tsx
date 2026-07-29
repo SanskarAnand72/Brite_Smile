@@ -50,7 +50,7 @@ export function ContactSection({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.05 }}
-              className="text-3xl md:text-4xl lg:text-5xl font-extrabold font-heading mb-8 leading-tight tracking-tight"
+              className="text-3xl md:text-4xl lg:text-5xl font-extrabold font-heading text-white mb-8 leading-tight tracking-tight"
             >
               Visit Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Luxury Clinic</span>
             </motion.h2>

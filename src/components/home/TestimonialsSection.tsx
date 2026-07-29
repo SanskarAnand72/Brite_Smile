@@ -44,7 +44,7 @@ export function TestimonialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.05 }}
-              className="text-3xl md:text-4xl lg:text-5xl font-extrabold font-heading mb-3 leading-tight tracking-tight"
+              className="text-3xl md:text-4xl lg:text-5xl font-extrabold font-heading text-white mb-3 leading-tight tracking-tight"
             >
               Don't just take our word for it. <br className="hidden sm:block"/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-300">Read what our patients say.</span>
