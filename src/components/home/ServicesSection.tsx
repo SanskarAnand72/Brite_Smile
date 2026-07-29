@@ -6,6 +6,8 @@ import Link from "next/link"
 import { ArrowRight, Sparkles, Smile, ShieldCheck, Activity, Search, ShieldPlus, Component } from "lucide-react"
 import { mockData } from "@/lib/data/mock"
 
+import { useBookingModal } from "@/components/booking/BookingContext"
+
 // Helper to map string icon names from mock data to actual Lucide components
 const getIcon = (iconName: string) => {
   switch (iconName) {
@@ -21,6 +23,7 @@ const getIcon = (iconName: string) => {
 
 export function ServicesSection() {
   const { services } = mockData;
+  const { openBookingModal } = useBookingModal();
 
   return (
     <section className="py-32 bg-slate-50 relative" id="services">
@@ -109,8 +112,12 @@ export function ServicesSection() {
                     >
                       Learn More <ArrowRight className="h-4 w-4" />
                     </Link>
-                    <Button asChild size="sm" className="bg-slate-900 text-white hover:bg-blue-600 rounded-full px-6 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 shadow-lg">
-                      <Link href="/book">Book Now</Link>
+                    <Button 
+                      size="sm" 
+                      onClick={() => openBookingModal(treatment.title)}
+                      className="bg-slate-900 text-white hover:bg-blue-600 rounded-full px-6 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 shadow-lg"
+                    >
+                      Book Now
                     </Button>
                   </div>
                 </div>

@@ -82,8 +82,8 @@ export default function TreatmentsPage() {
                 >
                   Learn More <ArrowRight className="h-4 w-4" />
                 </Link>
-                <Button asChild size="sm" variant="outline" className="rounded-full">
-                  <Link href={`/book?treatment=${treatment.slug}`}>Book</Link>
+                <Button asChild size="sm" className="bg-slate-900 text-white hover:bg-blue-600 rounded-full px-6 transition-all duration-300">
+                  <Link href="/book">Book Now</Link>
                 </Button>
               </div>
             </div>

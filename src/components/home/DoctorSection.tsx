@@ -7,8 +7,11 @@ import Image from "next/image"
 import { ArrowRight, Award, GraduationCap, Heart, CheckCircle2, Stethoscope } from "lucide-react"
 import { mockData } from "@/lib/data/mock"
 
+import { useBookingModal } from "@/components/booking/BookingContext"
+
 export function DoctorSection() {
   const doctor = mockData.doctors[0]; // Primary featured doctor
+  const { openBookingModal } = useBookingModal();
 
   const achievements = [
     { value: `${doctor.experienceYears}+`, label: "Years Experience", icon: Heart },
@@ -129,7 +132,15 @@ export function DoctorSection() {
               transition={{ delay: 0.4 }}
               className="pt-4 flex flex-col sm:flex-row items-center gap-4"
             >
-              <Button size="lg" asChild className="bg-slate-900 hover:bg-blue-600 text-white rounded-full px-8 py-6 h-auto text-base shadow-xl hover:shadow-blue-600/30 group w-full sm:w-auto transition-all duration-300">
+              <Button 
+                size="lg" 
+                onClick={() => openBookingModal(`Consultation with ${doctor.name}`)}
+                className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-8 py-6 h-auto text-base shadow-xl shadow-blue-600/20 hover:shadow-blue-600/40 w-full sm:w-auto transition-all duration-300"
+              >
+                Book Consultation
+              </Button>
+
+              <Button size="lg" variant="outline" asChild className="bg-transparent text-slate-700 border-slate-200 hover:bg-slate-50 rounded-full px-8 py-6 h-auto text-base group w-full sm:w-auto transition-all duration-300">
                 <Link href={`/doctor/${doctor.id}`}>
                   Read Full Biography
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />

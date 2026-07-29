@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { Phone, CalendarCheck, Star, ShieldCheck, ArrowRight, MessageCircle, ChevronDown, CheckCircle2 } from "lucide-react"
 import { AnimatedToothMascot3D } from "./AnimatedToothMascot3D"
+import { useBookingModal } from "@/components/booking/BookingContext"
 
 type HeroSectionProps = {
   headline: string
@@ -25,6 +26,8 @@ export function HeroSection({
   doctorImageUrl,
   whatsappNumber,
 }: HeroSectionProps) {
+  const { openBookingModal } = useBookingModal()
+
   return (
     <section id="hero" className="relative min-h-[85vh] flex items-center pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-visible bg-[#f8fafc]">
       {/* Premium Background Gradients */}
@@ -67,10 +70,15 @@ export function HeroSection({
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4"
           >
-            <Button size="lg" asChild className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-7 py-6 text-[15px] font-semibold w-full sm:w-auto shadow-xl shadow-blue-600/20 hover:shadow-blue-600/40 transition-all duration-300">
-              <Link href={ctaLink}>
-                View Services
-              </Link>
+            <Button 
+              size="lg" 
+              onClick={() => openBookingModal()}
+              className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-7 py-6 text-[15px] font-semibold w-full sm:w-auto shadow-xl shadow-blue-600/20 hover:shadow-blue-600/40 transition-all duration-300"
+            >
+              <span className="flex items-center gap-2">
+                <CalendarCheck className="h-5 w-5" />
+                Book Appointment
+              </span>
             </Button>
             
             <Button size="lg" variant="outline" asChild className="bg-transparent hover:bg-blue-50 text-blue-600 border-2 border-blue-200 hover:border-blue-300 rounded-full px-7 py-6 text-[15px] font-semibold w-full sm:w-auto transition-all duration-300">

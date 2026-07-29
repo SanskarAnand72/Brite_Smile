@@ -5,8 +5,11 @@ import { MessageCircle, CalendarCheck } from "lucide-react"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 
+import { useBookingModal } from "@/components/booking/BookingContext"
+
 export function FloatingCTAs() {
   const [isVisible, setIsVisible] = useState(false)
+  const { openBookingModal } = useBookingModal()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,14 +59,14 @@ export function FloatingCTAs() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 100 }}
             transition={{ type: "spring", stiffness: 260, damping: 20 }}
-            className="fixed bottom-0 left-0 w-full z-50 sm:hidden bg-white/80 backdrop-blur-xl border-t border-slate-200 p-4 pb-6 flex gap-3 shadow-[0_-10px_40px_-10px_rgba(0,0,0,0.1)]"
+            className="fixed bottom-0 left-0 w-full z-40 sm:hidden bg-white/80 backdrop-blur-xl border-t border-slate-200 p-4 pb-6 flex gap-3 shadow-[0_-10px_40px_-10px_rgba(0,0,0,0.1)]"
           >
-            <Link 
-              href="/book" 
+            <button 
+              onClick={() => openBookingModal()} 
               className="flex-1 bg-primary hover:bg-teal-700 text-white rounded-2xl h-14 flex items-center justify-center font-bold shadow-lg transition-colors"
             >
               <CalendarCheck className="mr-2 h-5 w-5" /> Book Now
-            </Link>
+            </button>
             <a 
               href="https://wa.me/15551234567" 
               target="_blank" 

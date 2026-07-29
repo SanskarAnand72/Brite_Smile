@@ -1,58 +1,110 @@
-import { BookingForm } from "@/components/BookingForm"
+import { CalBookingEmbed } from "@/components/booking/CalBookingEmbed"
 import Image from "next/image"
+import { Metadata } from "next"
+import { ShieldCheck, Star, CalendarCheck, Clock, Award } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Book an Appointment | Brite Smile Dental Care",
+  description: "Schedule your dental consultation online with Dr. Priyank Prakash at Brite Smile Dental Care, Lucknow.",
+}
 
 export default function BookPage() {
   return (
-    <main className="min-h-screen bg-slate-50 flex flex-col">
-      <div className="flex-1 max-w-7xl mx-auto w-full px-6 py-24 md:py-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+    <main className="min-h-screen bg-slate-50/70 pt-28 pb-20 md:pt-36 md:pb-28">
+      <div className="container mx-auto px-4 md:px-6 max-w-7xl">
+        {/* Page Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-sm font-semibold shadow-sm">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-600" />
+            </span>
+            Official Cal.com Booking
+          </div>
           
-          <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-sm font-medium">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-              </span>
-              Accepting New Patients
-            </div>
-            
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-slate-900 leading-tight">
-              Ready to transform your <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">smile?</span>
-            </h1>
-            
-            <p className="text-lg text-slate-600 max-w-lg leading-relaxed">
-              Book a consultation with our expert team today. We provide premium dental care tailored to your unique needs.
-            </p>
-            
-            <div className="relative h-[300px] sm:h-[400px] w-full rounded-3xl overflow-hidden shadow-2xl shadow-blue-900/5 mt-8 border border-white">
-              <Image 
-                src="/images/clinic_hero.jpg"
-                alt="Modern dental clinic reception"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-              <div className="absolute bottom-6 left-6 right-6">
-                <div className="glass-panel p-4 rounded-2xl flex items-center gap-4">
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md">
-                    <span className="text-xl font-bold text-primary">5.0</span>
-                  </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading text-slate-900 tracking-tight leading-tight">
+            Schedule Your <span className="text-blue-600">Dental Appointment</span>
+          </h1>
+          
+          <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto font-medium">
+            Select your preferred date & time below for instant confirmation with our dental specialists.
+          </p>
+        </div>
+
+        {/* Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          
+          {/* Left Column: Trust Info & Clinic Highlights */}
+          <div className="lg:col-span-4 space-y-6">
+            <div className="bg-white p-6 md:p-8 rounded-3xl border border-slate-100 shadow-xl space-y-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+                  <CalendarCheck className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900 text-lg">Instant Confirmation</h3>
+                  <p className="text-xs text-slate-500 font-medium">Real-time slot availability</p>
+                </div>
+              </div>
+
+              <div className="space-y-4 pt-2 border-t border-slate-100 text-sm">
+                <div className="flex items-start gap-3">
+                  <ShieldCheck className="w-5 h-5 text-teal-600 shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-slate-900 font-bold">Top Rated Clinic</p>
-                    <p className="text-sm text-slate-600">Based on 500+ reviews</p>
+                    <span className="font-semibold text-slate-900 block">No Advance Fee</span>
+                    <span className="text-slate-500 text-xs">Pay at the clinic after consultation</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <Clock className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-slate-900 block">Flexible Rescheduling</span>
+                    <span className="text-slate-500 text-xs">Easily change your appointment time</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <Award className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-slate-900 block">25+ Years Experience</span>
+                    <span className="text-slate-500 text-xs">Trusted dental care in Lucknow</span>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          
-          <div className="relative">
-            <div className="absolute -inset-4 bg-gradient-to-tr from-primary/10 to-blue-500/10 blur-3xl rounded-full opacity-50"></div>
-            <div className="relative z-10">
-              <BookingForm />
+
+            {/* Clinic Card */}
+            <div className="relative h-[220px] rounded-3xl overflow-hidden shadow-xl border border-white">
+              <Image 
+                src="/images/clinic_hero.jpg"
+                alt="Brite Smile Clinic"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 text-white flex items-center justify-between">
+                <div>
+                  <p className="font-bold text-base">Dr. Priyank Prakash</p>
+                  <p className="text-xs text-slate-200">Chief Dental Surgeon</p>
+                </div>
+                <div className="bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full text-slate-900 text-xs font-bold flex items-center gap-1 shadow-lg">
+                  <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                  4.9 Google
+                </div>
+              </div>
             </div>
           </div>
-          
+
+          {/* Right Column: Embedded Cal.com Booking Widget */}
+          <div className="lg:col-span-8">
+            <CalBookingEmbed 
+              calUrl="https://cal.com/atul-singh-ajxolc/book"
+              height="750px"
+              className="shadow-2xl"
+            />
+          </div>
+
         </div>
       </div>
     </main>

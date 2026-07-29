@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button"
 import { Phone, Menu, X, ArrowRight } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
+import { useBookingModal } from "@/components/booking/BookingContext"
+
 type NavbarProps = {
   navLinks: { name: string; href: string }[]
   contactPhone: string
@@ -16,6 +18,7 @@ type NavbarProps = {
 export function Navbar({ navLinks, contactPhone, clinicName }: NavbarProps) {
   const [isScrolled, setIsScrolled] = React.useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
+  const { openBookingModal } = useBookingModal()
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -69,11 +72,14 @@ export function Navbar({ navLinks, contactPhone, clinicName }: NavbarProps) {
             {contactPhone}
           </a>
           
-          <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 py-6 text-[15px] font-semibold shadow-lg shadow-blue-600/20 hover:shadow-blue-600/40 transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap">
-            <Link href="/book" className="flex items-center gap-2">
+          <Button 
+            onClick={() => openBookingModal()}
+            className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 py-6 text-[15px] font-semibold shadow-lg shadow-blue-600/20 hover:shadow-blue-600/40 transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap"
+          >
+            <span className="flex items-center gap-2">
               Book Appointment
               <ArrowRight className="h-[18px] w-[18px]" />
-            </Link>
+            </span>
           </Button>
         </div>
 
@@ -107,8 +113,14 @@ export function Navbar({ navLinks, contactPhone, clinicName }: NavbarProps) {
               </Link>
             ))}
             <div className="h-px bg-slate-100 my-2" />
-            <Button asChild className="w-full bg-primary hover:bg-teal-700 text-white rounded-full py-6 text-lg shadow-lg shadow-primary/20">
-              <Link href="/book">Book Appointment Now</Link>
+            <Button 
+              onClick={() => {
+                setIsMobileMenuOpen(false)
+                openBookingModal()
+              }}
+              className="w-full bg-primary hover:bg-teal-700 text-white rounded-full py-6 text-lg shadow-lg shadow-primary/20"
+            >
+              Book Appointment Now
             </Button>
           </motion.div>
         )}

@@ -62,7 +62,7 @@ export default function TreatmentDetailPage({ params }: { params: { slug: string
               {treatment.overview.substring(0, 150)}...
             </p>
             <Button size="lg" asChild className="bg-white text-teal-600 hover:bg-slate-100 rounded-full px-8">
-              <Link href={`/book?treatment=${params.slug}`}>Book a Consultation</Link>
+              <Link href="/book">Book a Consultation</Link>
             </Button>
           </div>
         </div>
@@ -126,8 +126,8 @@ export default function TreatmentDetailPage({ params }: { params: { slug: string
               <div className="bg-teal-600 p-8 rounded-3xl text-white text-center">
                 <h3 className="text-2xl font-bold mb-4">Ready for a better smile?</h3>
                 <p className="text-teal-100 mb-6">Schedule your consultation today and take the first step towards perfect oral health.</p>
-                <Button size="lg" className="w-full bg-white text-teal-600 hover:bg-slate-100 rounded-full">
-                  Book Appointment
+                <Button size="lg" asChild className="w-full bg-white text-teal-600 hover:bg-slate-100 rounded-full">
+                  <Link href="/book">Book Appointment</Link>
                 </Button>
               </div>
             </div>

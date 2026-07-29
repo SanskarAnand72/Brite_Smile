@@ -4,6 +4,8 @@ import { motion } from "framer-motion"
 import { MapPin, Phone, Mail, Clock, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
+import { useBookingModal } from "@/components/booking/BookingContext"
+
 type ContactSectionProps = {
   address: string
   phone: string
@@ -19,6 +21,8 @@ export function ContactSection({
   workingHours,
   googleMapsEmbedUrl,
 }: ContactSectionProps) {
+  const { openBookingModal } = useBookingModal()
+
   return (
     <section id="contact" className="py-32 bg-white relative">
       <div className="container mx-auto px-4 md:px-6">
@@ -107,12 +111,18 @@ export function ContactSection({
               transition={{ delay: 0.5 }}
               className="mt-12 flex flex-col sm:flex-row gap-4"
             >
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-8 h-14 text-base shadow-[0_10px_40px_-10px_rgba(37,99,235,0.6)] hover:-translate-y-1 transition-transform">
-                Call Now
+              <Button 
+                size="lg" 
+                onClick={() => openBookingModal()}
+                className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-8 h-14 text-base shadow-[0_10px_40px_-10px_rgba(37,99,235,0.6)] hover:-translate-y-1 transition-transform"
+              >
+                Book Appointment Online
               </Button>
-              <Button size="lg" variant="outline" className="border-slate-700 text-slate-300 hover:text-white hover:bg-slate-800 rounded-full px-8 h-14 text-base group">
-                Get Directions
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <Button size="lg" variant="outline" asChild className="border-slate-700 text-slate-300 hover:text-white hover:bg-slate-800 rounded-full px-8 h-14 text-base group">
+                <a href={`tel:${phone.replace(/[^0-9+]/g, '')}`}>
+                  Call Clinic
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </a>
               </Button>
             </motion.div>
           </div>
