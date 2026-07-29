@@ -1,6 +1,7 @@
 "use server"
 
 import { z } from "zod"
+import { mockData } from "@/lib/data/mock"
 
 const bookingSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -33,8 +34,9 @@ export async function submitAppointment(formData: FormData) {
     // DB integration coming later — log and return success
     console.log("Appointment request received:", validatedFields.data)
 
+    const rawPhone = mockData.settings.contactPhone.replace(/[^0-9]/g, '')
     const message = `Hello Brite Smile! I just booked an appointment online.\nName: ${name}\nDate: ${preferredDate}\nTime: ${preferredTime}`
-    const whatsappUrl = `https://wa.me/15551234567?text=${encodeURIComponent(message)}`
+    const whatsappUrl = `https://wa.me/${rawPhone}?text=${encodeURIComponent(message)}`
 
     return {
       success: true,

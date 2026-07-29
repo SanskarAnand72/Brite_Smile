@@ -1,3 +1,5 @@
+import { mockData } from "@/lib/data/mock"
+
 export function SchemaMarkup() {
   const localBusinessSchema = {
     "@context": "https://schema.org",
@@ -6,7 +8,7 @@ export function SchemaMarkup() {
     "image": "https://britesmiledental.com/logo.png",
     "@id": "",
     "url": "https://britesmiledental.com",
-    "telephone": "+15551234567",
+    "telephone": mockData.settings.contactPhone,
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "123 Dental Street, Medical District",

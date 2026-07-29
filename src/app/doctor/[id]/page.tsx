@@ -111,10 +111,10 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                 </Button>
 
                 <a 
-                  href="tel:+919415004719" 
+                  href={`tel:${mockData.settings.contactPhone.replace(/[^0-9+]/g, '')}`} 
                   className="inline-flex items-center justify-center px-6 py-3.5 rounded-full border border-slate-200 text-slate-700 font-semibold hover:bg-slate-50 transition-colors text-sm"
                 >
-                  Call Clinic Directly
+                  Call Clinic ({mockData.settings.contactPhone})
                 </a>
               </div>
             </div>

@@ -11,7 +11,7 @@ export const mockData = {
       { label: "YEARS EXPERIENCE", value: "24+" },
       { label: "TREATMENTS", value: "30+" }
     ],
-    contactPhone: "+91 94150 04719",
+    contactPhone: "+91 XXXXXXXXXX",
     contactEmail: "info@britesmiledental.com",
     contactAddress: "Lucknow, Uttar Pradesh",
     workingHours: "Mon-Sat: 10:00 AM - 8:00 PM",
