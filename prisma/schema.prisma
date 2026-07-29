@@ -1,0 +1,181 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String?
+  email     String   @unique
+  password  String
+  role      Role     @default(ADMIN)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  ADMIN
+  STAFF
+}
+
+model Appointment {
+  id            String   @id @default(cuid())
+  name          String
+  email         String
+  phone         String
+  treatmentId   String?
+  treatment     Treatment? @relation(fields: [treatmentId], references: [id])
+  preferredDate DateTime
+  preferredTime String
+  notes         String?
+  status        AppointmentStatus @default(PENDING)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+model Treatment {
+  id               String   @id @default(cuid())
+  title            String
+  slug             String   @unique
+  overview         String
+  benefits         String
+  procedureDetails String
+  recoveryInfo     String
+  featuredImageId  String?
+  featuredImageUrl String?
+  appointments     Appointment[]
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  seoMetadata      SEOMetadata?
+}
+
+model GalleryImage {
+  id         String   @id @default(cuid())
+  publicId   String
+  url        String
+  category   String?
+  altText    String?
+  isBeforeAfter Boolean @default(false)
+  featured   Boolean  @default(false)
+  displayOrder Int    @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Testimonial {
+  id          String   @id @default(cuid())
+  patientName String
+  rating      Int
+  review      String
+  videoUrl    String?
+  featured    Boolean  @default(false)
+  displayOrder Int     @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model BlogPost {
+  id               String   @id @default(cuid())
+  title            String
+  slug             String   @unique
+  content          String
+  excerpt          String
+  author           String
+  category         String
+  tags             String   // Stored as comma-separated values or JSON
+  readingTime      Int
+  featuredImageId  String?
+  featuredImageUrl String?
+  published        Boolean  @default(false)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  seoMetadata      SEOMetadata?
+}
+
+model FAQ {
+  id        String   @id @default(cuid())
+  question  String
+  answer    String
+  category  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Doctor {
+  id              String   @id @default(cuid())
+  name            String
+  biography       String
+  qualifications  String
+  experienceYears Int
+  specializations String
+  awards          String?
+  timeline        String? // Could be JSON
+  imageUrl        String?
+  imageId         String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model WebsiteSetting {
+  id            String   @id @default(cuid())
+  key           String   @unique
+  value         String
+  description   String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model SEOMetadata {
+  id              String   @id @default(cuid())
+  title           String
+  description     String
+  canonicalUrl    String?
+  openGraphImage  String?
+  
+  // Relations
+  treatmentId     String?  @unique
+  treatment       Treatment? @relation(fields: [treatmentId], references: [id])
+  
+  blogPostId      String?  @unique
+  blogPost        BlogPost? @relation(fields: [blogPostId], references: [id])
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model ActivityLog {
+  id          String   @id @default(cuid())
+  action      String
+  entityType  String
+  entityId    String
+  userId      String?
+  details     String?
+  createdAt   DateTime @default(now())
+}
+
+model NavigationItem {
+  id        String   @id @default(cuid())
+  label     String
+  href      String
+  order     Int      @default(0)
+  isEnabled Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
