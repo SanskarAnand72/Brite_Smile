@@ -1,8 +1,6 @@
 "use server"
 
 import { z } from "zod"
-import { prisma } from "@/lib/prisma"
-import { revalidatePath } from "next/cache"
 
 const bookingSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -17,8 +15,7 @@ const bookingSchema = z.object({
 export async function submitAppointment(formData: FormData) {
   try {
     const data = Object.fromEntries(formData.entries())
-    
-    // Parse and validate data
+
     const validatedFields = bookingSchema.safeParse({
       ...data,
       treatmentId: data.treatmentId === "none" ? undefined : data.treatmentId,
@@ -31,42 +28,21 @@ export async function submitAppointment(formData: FormData) {
       }
     }
 
-    const { name, email, phone, treatmentId, preferredDate, preferredTime, notes } = validatedFields.data
+    const { name, preferredDate, preferredTime } = validatedFields.data
 
-    // Save to Database
-    const appointment = await prisma.appointment.create({
-      data: {
-        name,
-        email,
-        phone,
-        treatmentId,
-        preferredDate: new Date(preferredDate),
-        preferredTime,
-        notes,
-        status: "PENDING"
-      }
-    })
+    // DB integration coming later — log and return success
+    console.log("Appointment request received:", validatedFields.data)
 
-    revalidatePath("/admin/appointments")
-
-    // Generate WhatsApp link (for client redirect)
-    // URL Encode the message
-    const message = `Hello Brite Smile! I just booked an appointment online.
-Name: ${name}
-Date: ${preferredDate}
-Time: ${preferredTime}`
+    const message = `Hello Brite Smile! I just booked an appointment online.\nName: ${name}\nDate: ${preferredDate}\nTime: ${preferredTime}`
     const whatsappUrl = `https://wa.me/15551234567?text=${encodeURIComponent(message)}`
 
-    return { 
-      success: true, 
+    return {
+      success: true,
       message: "Appointment booked successfully!",
-      whatsappUrl 
+      whatsappUrl
     }
-
   } catch (error) {
     console.error("Booking error:", error)
-    return {
-      error: "Something went wrong. Please try again."
-    }
+    return { error: "Something went wrong. Please try again." }
   }
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
@@ -34,7 +34,15 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { createPublicAppointment } from "@/lib/actions/public.actions"
-import { getTreatments } from "@/lib/actions/treatment.actions"
+
+const staticTreatments = [
+  { id: "teeth-whitening", title: "Teeth Whitening" },
+  { id: "dental-implants", title: "Dental Implants" },
+  { id: "orthodontics", title: "Orthodontics & Braces" },
+  { id: "root-canal", title: "Root Canal Treatment" },
+  { id: "dental-exams", title: "Check-ups & Exams" },
+  { id: "periodontics", title: "Gum Disease Treatment" },
+]
 
 const formSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -49,17 +57,7 @@ const formSchema = z.object({
 export function BookingForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
-  const [treatments, setTreatments] = useState<{id: string, title: string}[]>([])
-
-  useEffect(() => {
-    async function fetchTreatments() {
-      const res = await getTreatments()
-      if (res.success && res.data) {
-        setTreatments(res.data)
-      }
-    }
-    fetchTreatments()
-  }, [])
+  const [treatments] = useState(staticTreatments)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

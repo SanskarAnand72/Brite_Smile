@@ -28,7 +28,7 @@ export function AnimatedToothMascot() {
     transition: {
       duration: 8,
       repeat: Infinity,
-      ease: "easeInOut",
+      ease: "easeInOut" as const,
       times: [0, 0.45, 0.48, 0.51, 0.6, 0.7, 0.8, 0.85, 0.88, 0.9, 0.92, 0.95, 0.97, 0.98, 0.99, 1]
     }
   };
@@ -40,7 +40,7 @@ export function AnimatedToothMascot() {
     transition: {
       duration: 6,
       repeat: Infinity,
-      ease: "easeInOut"
+      ease: "easeInOut" as const
     }
   };
 
@@ -51,7 +51,7 @@ export function AnimatedToothMascot() {
     transition: {
       duration: 5,
       repeat: Infinity,
-      ease: "easeInOut"
+      ease: "easeInOut" as const
     }
   };
 
