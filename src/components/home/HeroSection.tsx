@@ -28,7 +28,7 @@ export function HeroSection({
   const { openBookingModal } = useBookingModal()
 
   return (
-    <section id="hero" className="relative min-h-[90vh] flex items-center pt-28 pb-16 lg:pt-36 lg:pb-28 overflow-hidden bg-mesh-hero">
+    <section id="hero" className="relative pt-24 pb-8 lg:pt-32 lg:pb-14 overflow-hidden bg-mesh-hero">
       {/* Decorative Glow Orbs */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-40 right-0 w-[700px] h-[700px] bg-blue-500/15 rounded-full blur-[140px] animate-pulse-ring" />
@@ -126,7 +126,7 @@ export function HeroSection({
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-6 relative flex items-center justify-center z-10 w-full min-h-[460px] lg:min-h-[580px] mt-6 lg:mt-0"
+          className="lg:col-span-6 relative flex items-center justify-center z-10 w-full min-h-[320px] sm:min-h-[380px] lg:min-h-[440px] mt-4 lg:mt-0"
         >
           {/* Main Container Glass Frame */}
           <div className="relative z-10 w-full max-w-[480px] aspect-square rounded-3xl p-6 bg-gradient-to-b from-white/80 to-white/40 backdrop-blur-2xl border border-white/90 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
