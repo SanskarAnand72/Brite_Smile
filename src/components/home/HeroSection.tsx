@@ -28,7 +28,7 @@ export function HeroSection({
   const { openBookingModal } = useBookingModal()
 
   return (
-    <section id="hero" className="relative pt-24 pb-8 lg:pt-32 lg:pb-14 overflow-hidden bg-mesh-hero">
+    <section id="hero" className="relative pt-24 pb-14 lg:pt-32 lg:pb-24 overflow-hidden bg-mesh-hero">
       {/* Decorative Glow Orbs */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-40 right-0 w-[700px] h-[700px] bg-blue-500/15 rounded-full blur-[140px] animate-pulse-ring" />
@@ -193,7 +193,7 @@ export function HeroSection({
 
       {/* Elegant Bottom Section Transition Divider */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20 pointer-events-none">
-        <svg className="relative block w-full h-[50px] md:h-[80px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <svg className="relative block w-full h-[60px] md:h-[90px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
           <path d="M0,0 C150,90 350,-40 500,60 C650,160 900,10 1200,40 L1200,120 L0,120 Z" className="fill-white/80 backdrop-blur-md"></path>
         </svg>
       </div>
