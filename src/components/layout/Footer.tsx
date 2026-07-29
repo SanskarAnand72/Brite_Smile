@@ -64,10 +64,10 @@ export function Footer() {
           <div className="lg:col-span-2">
             <h4 className="text-white font-semibold font-heading mb-6">Quick Links</h4>
             <ul className="space-y-4 text-sm font-medium">
-              <li><Link href="/about" className="hover:text-blue-400 transition-colors flex items-center gap-2"><ArrowRight className="w-3 h-3"/> About Clinic</Link></li>
+              <li><Link href="/#about" className="hover:text-blue-400 transition-colors flex items-center gap-2"><ArrowRight className="w-3 h-3"/> About Clinic</Link></li>
               <li><Link href="/treatments" className="hover:text-blue-400 transition-colors flex items-center gap-2"><ArrowRight className="w-3 h-3"/> Our Treatments</Link></li>
               <li><Link href="/gallery" className="hover:text-blue-400 transition-colors flex items-center gap-2"><ArrowRight className="w-3 h-3"/> Smile Gallery</Link></li>
-              <li><Link href="/doctor" className="hover:text-blue-400 transition-colors flex items-center gap-2"><ArrowRight className="w-3 h-3"/> Meet the Doctor</Link></li>
+              <li><Link href="/doctor/dr-priyank" className="hover:text-blue-400 transition-colors flex items-center gap-2"><ArrowRight className="w-3 h-3"/> Meet the Doctor</Link></li>
               <li><Link href="/blogs" className="hover:text-blue-400 transition-colors flex items-center gap-2"><ArrowRight className="w-3 h-3"/> Dental Blog</Link></li>
             </ul>
           </div>

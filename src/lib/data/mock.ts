@@ -53,9 +53,10 @@ export const mockData = {
     { id: "3", patientName: "Rahul Verma", rating: 5, content: "Very clean clinic and polite staff. The root canal treatment was done perfectly.", isFeatured: true, displayOrder: 3 }
   ],
   gallery: [
-    { id: "1", title: "Modern Clinic", url: "/images/clinic_hero.jpg", category: "clinic", isBeforeAfter: false, isFeatured: true, displayOrder: 1 },
-    { id: "2", title: "Advanced Equipment", url: "/images/gallery_1.jpg", category: "clinic", isBeforeAfter: false, isFeatured: true, displayOrder: 2 },
-    { id: "3", title: "Technology", url: "/images/gallery_2.jpg", category: "clinic", isBeforeAfter: false, isFeatured: true, displayOrder: 3 }
+    { id: "1", title: "Smile Makeover", url: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80", category: "Smile Makeover", isBeforeAfter: true, isFeatured: true, displayOrder: 1 },
+    { id: "2", title: "Modern Treatment Room", url: "/images/clinic_hero.jpg", category: "Clinic", isBeforeAfter: false, isFeatured: true, displayOrder: 2 },
+    { id: "3", title: "Advanced Equipment", url: "/images/gallery_1.jpg", category: "Equipment", isBeforeAfter: false, isFeatured: true, displayOrder: 3 },
+    { id: "4", title: "Laser Whitening", url: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80", category: "Whitening", isBeforeAfter: true, isFeatured: true, displayOrder: 4 }
   ],
   faqs: [
     { id: "1", question: "How often should I visit the dentist?", answer: "We recommend visiting every 6 months for a routine check-up and professional cleaning." },
